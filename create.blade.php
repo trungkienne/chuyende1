@@ -19,36 +19,35 @@
     {{-- CONTENT --}}
     <div style="flex:1;padding:20px">
 
-        <h2>Sửa user #{{ $user->id }}</h2>
+        <h2>Thêm user</h2>
 
-        <form action="/admin/users/{{ $user->id }}" method="POST" style="max-width:500px">
+        <form action="/admin/users" method="POST" style="max-width:500px">
             @csrf
-            @method('PUT')
 
             <p>
                 <label>Tên:</label><br>
-                <input type="text" name="name" value="{{ $user->name }}" required style="width:100%;padding:8px">
+                <input type="text" name="name" required style="width:100%;padding:8px">
             </p>
 
             <p>
                 <label>Email:</label><br>
-                <input type="email" value="{{ $user->email }}" disabled style="width:100%;padding:8px;background:#eee">
+                <input type="email" name="email" required style="width:100%;padding:8px">
             </p>
 
             <p>
-                <label>Mật khẩu mới (để trống nếu không đổi):</label><br>
-                <input type="password" name="password" style="width:100%;padding:8px">
+                <label>Mật khẩu:</label><br>
+                <input type="password" name="password" required style="width:100%;padding:8px">
             </p>
 
             <p>
                 <label>Vai trò:</label><br>
                 <select name="role" style="width:100%;padding:8px">
-                    <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
-                    <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
                 </select>
             </p>
 
-            <button type="submit" class="btn-order">Cập nhật</button>
+            <button type="submit" class="btn-order">Thêm</button>
             <a href="/admin/users" class="btn-order" style="background:#666">Hủy</a>
         </form>
 
