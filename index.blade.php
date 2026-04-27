@@ -19,9 +19,9 @@
     {{-- CONTENT --}}
     <div style="flex:1;padding:20px">
 
-        <h2>Quản lý user</h2>
+        <h2>Quản lý danh mục</h2>
 
-        <a href="/admin/users/create" class="btn-order">+ Thêm user</a>
+        <a href="/admin/categories/create" class="btn-order">+ Thêm danh mục</a>
 
         @if(session('success'))
             <p style="color:green">{{ session('success') }}</p>
@@ -30,31 +30,20 @@
         <table border="1" width="100%" cellpadding="10" style="margin-top:20px">
             <tr>
                 <th>ID</th>
-                <th>Tên</th>
-                <th>Email</th>
-                <th>Vai trò</th>
-                <th>Ngày tạo</th>
+                <th>Tên danh mục</th>
+                <th>Mô tả</th>
                 <th>Hành động</th>
             </tr>
 
-            @foreach($users as $user)
+            @foreach($categories as $c)
             <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
+                <td>{{ $c->id }}</td>
+                <td>{{ $c->name }}</td>
+                <td>{{ $c->description }}</td>
                 <td>
-                    @if($user->role == 'admin')
-                        <span style="color:red;font-weight:bold">Admin</span>
-                    @else
-                        <span style="color:gray">User</span>
-                    @endif
-                </td>
-                <td>{{ $user->created_at }}</td>
-                <td>
-                    <a href="/admin/users/{{ $user->id }}">Xem</a>
-                    <a href="/admin/users/{{ $user->id }}/edit">Sửa</a>
+                    <a href="/admin/categories/{{ $c->id }}/edit">Sửa</a>
 
-                    <form action="/admin/users/{{ $user->id }}" method="POST" style="display:inline">
+                    <form action="/admin/categories/{{ $c->id }}" method="POST" style="display:inline">
                         @csrf
                         @method('DELETE')
                         <button onclick="return confirm('Xóa?')">Xóa</button>

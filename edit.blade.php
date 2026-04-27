@@ -19,37 +19,24 @@
     {{-- CONTENT --}}
     <div style="flex:1;padding:20px">
 
-        <h2>Sửa user #{{ $user->id }}</h2>
+        <h2>Sửa danh mục</h2>
 
-        <form action="/admin/users/{{ $user->id }}" method="POST" style="max-width:500px">
+        <form action="/admin/categories/{{ $category->id }}" method="POST" style="max-width:500px">
             @csrf
             @method('PUT')
 
             <p>
-                <label>Tên:</label><br>
-                <input type="text" name="name" value="{{ $user->name }}" required style="width:100%;padding:8px">
+                <label>Tên danh mục:</label><br>
+                <input type="text" name="name" value="{{ $category->name }}" required style="width:100%;padding:8px">
             </p>
 
             <p>
-                <label>Email:</label><br>
-                <input type="email" value="{{ $user->email }}" disabled style="width:100%;padding:8px;background:#eee">
-            </p>
-
-            <p>
-                <label>Mật khẩu mới (để trống nếu không đổi):</label><br>
-                <input type="password" name="password" style="width:100%;padding:8px">
-            </p>
-
-            <p>
-                <label>Vai trò:</label><br>
-                <select name="role" style="width:100%;padding:8px">
-                    <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
-                    <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
-                </select>
+                <label>Mô tả:</label><br>
+                <textarea name="description" rows="4" style="width:100%;padding:8px">{{ $category->description }}</textarea>
             </p>
 
             <button type="submit" class="btn-order">Cập nhật</button>
-            <a href="/admin/users" class="btn-order" style="background:#666">Hủy</a>
+            <a href="/admin/categories" class="btn-order" style="background:#666">Hủy</a>
         </form>
 
     </div>

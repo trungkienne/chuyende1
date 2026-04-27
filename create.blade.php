@@ -19,36 +19,23 @@
     {{-- CONTENT --}}
     <div style="flex:1;padding:20px">
 
-        <h2>Thêm user</h2>
+        <h2>Thêm danh mục</h2>
 
-        <form action="/admin/users" method="POST" style="max-width:500px">
+        <form action="/admin/categories" method="POST" style="max-width:500px">
             @csrf
 
             <p>
-                <label>Tên:</label><br>
+                <label>Tên danh mục:</label><br>
                 <input type="text" name="name" required style="width:100%;padding:8px">
             </p>
 
             <p>
-                <label>Email:</label><br>
-                <input type="email" name="email" required style="width:100%;padding:8px">
-            </p>
-
-            <p>
-                <label>Mật khẩu:</label><br>
-                <input type="password" name="password" required style="width:100%;padding:8px">
-            </p>
-
-            <p>
-                <label>Vai trò:</label><br>
-                <select name="role" style="width:100%;padding:8px">
-                    <option value="user">User</option>
-                    <option value="admin">Admin</option>
-                </select>
+                <label>Mô tả:</label><br>
+                <textarea name="description" rows="4" style="width:100%;padding:8px"></textarea>
             </p>
 
             <button type="submit" class="btn-order">Thêm</button>
-            <a href="/admin/users" class="btn-order" style="background:#666">Hủy</a>
+            <a href="/admin/categories" class="btn-order" style="background:#666">Hủy</a>
         </form>
 
     </div>
